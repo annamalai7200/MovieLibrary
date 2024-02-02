@@ -13,6 +13,7 @@ import javax.sql.rowset.serial.SerialBlob;
 
 import movielibrarydto.Admin;
 import movielibrarydto.Movie;
+import movielibrarydto.User;
 
 public class Dao 
 {
@@ -34,12 +35,15 @@ public class Dao
 		return pst.executeUpdate(); 
 		
 	}
+	 
+		
+	
 	public Admin findByEmail(String aemail) throws ClassNotFoundException, SQLException
 	{
 		Connection con =getConnection();
 		
 		PreparedStatement pst = con.prepareStatement("select * from admin where adminemail=?");
-		pst.setString(1, aemail);
+		pst.setString(1, aemail); 
 		
 		ResultSet rs = pst.executeQuery();
 
@@ -55,6 +59,8 @@ public class Dao
 		return admin;
 		
 	}
+
+
 	public int saveMovie(Movie movie)throws ClassNotFoundException,SQLException
 	{
 		Connection conn=getConnection();

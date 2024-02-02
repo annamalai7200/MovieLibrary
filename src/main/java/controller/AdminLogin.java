@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Dao;
 import movielibrarydto.Admin;
@@ -24,14 +25,16 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 		Dao dao = new Dao();
 		try {
 			
-			Admin admin =dao.findByEmail(email);
+			Admin admin =dao.findByEmail(email);  
 			
 			if(admin!=null)
 			{
 				
 					if(admin.getAdminpassword().equals(password))
 					{
-						
+						 
+						HttpSession session =req.getSession();
+						session.setAttribute("adminname",admin.getAdminname());
 						req.setAttribute("movies", dao.getAllMovie());
 						RequestDispatcher rd=req.getRequestDispatcher("home.jsp");
 						rd.include(req, resp);
@@ -40,12 +43,11 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 						req.setAttribute("msgp", "password is wrong");
 						RequestDispatcher rd=req.getRequestDispatcher("alogin.jsp");
 						rd.include(req, resp);
+
 					}
-				
-				
 			}
 			else {
-				req.setAttribute("msge", "email is wrong");
+				req.setAttribute("msgp", "email is wrong");
 				RequestDispatcher rd=req.getRequestDispatcher("alogin.jsp");
 				rd.include(req, resp);
 			}

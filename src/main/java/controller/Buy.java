@@ -9,35 +9,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.Dao;
 import movielibrarydto.Movie;
-@WebServlet("/editmovie")
-public class MovieEdit extends HttpServlet
-{
+
+@WebServlet("/buy")
+public class Buy  extends HttpServlet{
+	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id= Integer.parseInt(req.getParameter("id"));
 		
-		int id = Integer.parseInt(req.getParameter("id"));
 		Dao dao = new Dao();
 		try {
-			HttpSession session =req.getSession();
-			String adminname=(String )session.getAttribute("adminname");
-			if(adminname!=null)
-			{
 			Movie m = dao.findMovieById(id);
 			req.setAttribute("movie", m);
-			RequestDispatcher dispatcher = req.getRequestDispatcher("edit.jsp");
-			dispatcher.include(req, resp);
-			}
-			else {
-				req.setAttribute("msgp", "access denied, admin login is reqired" );
-				RequestDispatcher dispatcher = req.getRequestDispatcher("alogin.jsp");
-				dispatcher.include(req, resp);
-				
-			}
 			
-			
+			RequestDispatcher rd=req.getRequestDispatcher("bought.jsp");
+			rd.include(req, resp);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,5 +33,6 @@ public class MovieEdit extends HttpServlet
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-}
+	}
+	
 }

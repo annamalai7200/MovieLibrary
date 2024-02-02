@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import dao.Dao;
@@ -42,10 +43,21 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 	
 	Dao dao=new Dao();
 	try {
+      HttpSession session=req.getSession();
+      String adminname=(String )session.getAttribute("adminname");
+      if(adminname!=null)
+      {
 		dao.saveMovie(movie);
 		req.setAttribute("movies",dao.getAllMovie());
 		RequestDispatcher dispatcher=req.getRequestDispatcher("home.jsp");
 		 dispatcher.include(req, resp);
+      }
+      else {
+			req.setAttribute("msgp", "access denied, admin login is reqired" );
+			RequestDispatcher dispatcher = req.getRequestDispatcher("alogin.jsp");
+			dispatcher.include(req, resp);
+			
+		}
 		 
 	} catch (ClassNotFoundException e) {
 		// TODO Auto-generated catch block

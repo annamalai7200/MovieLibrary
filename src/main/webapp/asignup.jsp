@@ -94,7 +94,7 @@
                 <button type="submit">Sign-Up</button>
             </div>
             <div class="form">
-                <p id="footer">Do you have an account ? <a href="adminlogin.jsp">LogIn!</a></p>
+                <p id="footer">Do you have an account ? <a href="alogin.jsp">LogIn!</a></p>
 
 </body>
 </html>

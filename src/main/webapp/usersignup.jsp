@@ -62,48 +62,40 @@ body {
             text-align: center;
         }
 	</style>
-
+</style>
 </head>
 <body>
-
-	<div id="container">
-<h1>AddMovie</h1>
- <form action="savemovie" method="post"  enctype="multipart/form-data">
+<div id="container">
+<h1>User SignUp</h1>
+ <form action="usersignup" >
 	
  <div class="form">
-                <label for="movieid">MovieId : </label>
-                <input type="number" name="movieid" id="movieid" required><br>
+                <label for="uId">Id : </label>
+                <input type="number" name="uid" id="uId" required><br>
             </div>
             <div class="form">
-                <label for="moviename">MovieName : </label>
-                <input type="text" name="moviename" id="moviename" required><br>
+                <label for="uName">Name : </label>
+                <input type="text" name="uname" id="uName" required><br>
             </div>
             <div class="form">
-                <label for="movieprice">MoviePrice : </label>
-                <input type="number" name="movieprice" id="movieprice" required><br>
+                <label for="uContact">Contact : </label>
+                <input type="tel" name="ucontact" id="uContact" required><br>
             </div>
             <div class="form">
-                <label for="movierating">MovieRating : </label>
-                <input type="number" name="movierating" id="movierating" required><br>
+                <label for="uEmail">Email : </label>
+                <input type="email" name="uemail" id="uEmail" required><br>
             </div>
            
             <div class="form">
-                <label for="moviegenre">MovieGenre: </label>
-                <input type="text" name="moviegenre" id="moviegenre" required>
-            </div>
-            <div class="form">
-                <label for="movielanguage">Movielanguage : </label>
-                <input type="text" name="movielanguage" id="movielanguage" required><br>
-            </div>
-            <div class="form">
-                <label for="movieimage">MovieImage : </label>
-                <input type="file" name="movieimage" id="movieimage" required><br>
+                <label for="uPass">PassWord : </label>
+                <input type="password" name="upassword" id="uPass" required>
             </div>
             
             <div class="form">
-                <button type="submit">Submit</button>
+                <button type="submit">Sign-Up</button>
             </div>
-	
-</form>
+            <div class="form">
+                <p id="footer">Do you have an account ? <a href="userlogin.jsp">LogIn!</a></p>
+
 </body>
 </html>

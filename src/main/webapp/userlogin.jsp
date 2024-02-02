@@ -4,13 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-
-<title>Admin LogIn</title>
-	 <style>
-        body {
+<title>User Login</title>
+ <style>
+       body {
            
             background-color: #aab67e;
             display: flex;
@@ -76,9 +72,7 @@
     </style>
 </head>
 <body>
-	<div class="login-container">
-    <h2>Admin Login</h2>
-    <form id="loginForm" action="alogin" method="post">
+ <form id="loginForm" action="userlogin" method="post">
         <div class="form-group">
             <label for="username">Username:</label>
             <input type="email" id="username" name="username" required>
@@ -101,7 +95,7 @@
             <button type="submit">Login</button>
         </div>
         <div class="form-group">
-        <p id="footer">Don't have an account ? <a href="asignup.jsp">signup!</a></p>
+        <p id="footer">Don't have an account ? <a href="usersignup.jsp">signup!</a></p>
         </div>
     </form>
 </body>
